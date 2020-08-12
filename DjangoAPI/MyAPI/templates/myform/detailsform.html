@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Machine Learning API</title>
+	<link rel="stylesheet" href= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+	{% load static %}
+	{% load crispy_forms_tags %}
+	<div class="mx-2 my-5">
+		<div class="container-fluid">
+			<div class="row" style="background-color: #94baf2">
+				<div class="col-sm-12">
+					<img src="{% static '/images/pic.jpg'%}" alt="Banner" style="width:500px;height:250px;">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col"></div>
+				<div class="sol-6 my-5">
+					<h1> Used Car Price Estimation </h1><br>
+					<form method="post">
+						{% csrf_token %}
+						{{form|crispy}}
+					<br>
+					<button type="submit" class="btn btn-primary"> Submit </button>
+					</form>
+					<br>
+				</div>
+				<div class="col">
+					<div class="mt-5">
+						<h4>
+							{% if messages %}
+	                        <ul class="messages">
+		                    {% for message in messages %}
+		                    <div {% if message.tags %} class="{{ message.tags}} " {% endif %} >{{ message}} </div>
+		                    {% endfor %}
+	                        </ul>
+	                        {% endif %}	
+						</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
